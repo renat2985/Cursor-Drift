@@ -1,6 +1,6 @@
 # Cursor Drift
 
-![Cursor Drift menu bar settings](screen.gif)
+<img src="screen.gif" alt="Cursor Drift menu bar settings" width="320">
 
 A compact macOS menu bar app that moves your cursor after a period of inactivity.
 Built with Swift, SwiftUI, AppKit, and Core Graphics. No third-party dependencies.
@@ -32,25 +32,25 @@ for the selected idle delay again. There is no separate settings window.
 
 ## Install a prebuilt app
 
-When a release is available, download `Cursor-Drift-macOS-universal.zip` from this
-repository's **Releases**, unzip it, and move **Cursor Drift.app** to **Applications**.
+Download [Cursor Drift ZIP](Cursor-Drift-macOS-universal.zip), unzip it,
+and move **Cursor Drift.app** to **Applications**.
 The universal build includes Apple Silicon and Intel code. It requires macOS 13 or later.
 **Xcode, Swift, and compilation are not required to use a prebuilt app.**
 
 Open the app and click its cursor icon in the menu bar. Click **Allow control**, then
 enable Cursor Drift in **System Settings → Privacy & Security → Accessibility**.
 If necessary, add the installed app using the + button and restart it. Select your
-language near the bottom of the popover. Enable movement using the top-right switch.
+language in the **Settings** tab. Enable movement using the top-right switch.
 
 ### Signing and Gatekeeper
 
 The default build script uses an **ad hoc signature**. It is not Developer ID signed
 or notarized. A downloaded build may be blocked by Gatekeeper; the default ZIP is
-therefore a development/test artifact, not a notarized public release.
+therefore a development/test artifact, not a notarized distribution build.
 
 For normal distribution outside the Mac App Store, sign with a Developer ID
 Application certificate, submit to Apple's notary service, and staple the ticket
-before creating the final release ZIP. See
+before creating the final ZIP. See
 [Apple's distribution guidance](https://developer.apple.com/developer-id/) and
 [notarization documentation](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution).
 Accessibility permission is still required for signed and notarized builds.
@@ -84,14 +84,6 @@ SIGN_IDENTITY="Developer ID Application: YOUR NAME (TEAMID)" bash scripts/build.
 This enables hardened runtime and timestamped signing. It does **not** submit the
 app for notarization. Notarize and staple separately, then recreate the archive.
 Never commit certificates, private keys, or Apple credentials.
-
-## Publishing on GitHub
-
-1. Push the source files to a repository. `.build/` and `dist/` are ignored.
-2. Build and validate the universal app. Complete signing and notarization for a
-   public distribution build.
-3. Create a versioned GitHub Release and attach the final ZIP as a release asset.
-   Users download that asset rather than GitHub's **Source code** archive.
 
 ## Launch at login
 
